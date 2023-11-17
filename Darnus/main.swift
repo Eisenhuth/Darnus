@@ -34,7 +34,12 @@ for quoteId in quoteIds{
         
         let chsQuote:ApiQuote? = await loadData(chsApiUrl)
         
-        let quoteText = Text(Text_de: xivQuote!.Text_de, Text_en: xivQuote!.Text_en, Text_fr: xivQuote!.Text_fr, Text_ja: xivQuote!.Text_ja, Text_chs: chsQuote?.Text_chs ?? "")
+        //fixing french, I guess?
+        var frenchText = xivQuote!.Text_fr
+        frenchText = frenchText.replacingOccurrences(of: "!", with: " !")
+        frenchText = frenchText.replacingOccurrences(of: "  ", with: " ")
+        
+        let quoteText = Text(Text_de: xivQuote!.Text_de, Text_en: xivQuote!.Text_en, Text_fr: frenchText, Text_ja: xivQuote!.Text_ja, Text_chs: chsQuote?.Text_chs ?? "")
         let quote = Quote(ID: quoteId, Text: quoteText)
         
         
