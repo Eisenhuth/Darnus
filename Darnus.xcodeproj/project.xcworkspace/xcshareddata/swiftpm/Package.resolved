@@ -1,5 +1,15 @@
 {
+  "originHash" : "17e2be110e70c6ecc74acc15d8019b3b647ff914f53ae0431ec4930299f5e926",
   "pins" : [
+    {
+      "identity" : "xivapi-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Eisenhuth/xivapi-swift",
+      "state" : {
+        "branch" : "beta",
+        "revision" : "690977b0c4d39b40e36749c547f47e8c70632af2"
+      }
+    },
     {
       "identity" : "yasu",
       "kind" : "remoteSourceControl",
@@ -10,5 +20,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
