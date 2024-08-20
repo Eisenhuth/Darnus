@@ -315,7 +315,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Eisenhuth/xivapi-swift";
 			requirement = {
-				branch = beta;
+				branch = master;
 				kind = branch;
 			};
 		};
