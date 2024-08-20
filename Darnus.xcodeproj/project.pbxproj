@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B47F76B2C5B495C00AEDD9E /* xivapi-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 0B47F76A2C5B495C00AEDD9E /* xivapi-swift */; };
 		0BA156892B06AF7000EA80B0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA156882B06AF7000EA80B0 /* main.swift */; };
 		0BA156902B06B09E00EA80B0 /* ApiQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA1568F2B06B09E00EA80B0 /* ApiQuote.swift */; };
 		0BA156922B06B1CA00EA80B0 /* NaelQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA156912B06B1CA00EA80B0 /* NaelQuotes.swift */; };
@@ -38,6 +39,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BA156952B06B33900EA80B0 /* YASU in Frameworks */,
+				0B47F76B2C5B495C00AEDD9E /* xivapi-swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +90,7 @@
 			name = Darnus;
 			packageProductDependencies = (
 				0BA156942B06B33900EA80B0 /* YASU */,
+				0B47F76A2C5B495C00AEDD9E /* xivapi-swift */,
 			);
 			productName = Darnus;
 			productReference = 0BA156852B06AF7000EA80B0 /* Darnus */;
@@ -119,6 +122,7 @@
 			mainGroup = 0BA1567C2B06AF7000EA80B0;
 			packageReferences = (
 				0BA156932B06B33900EA80B0 /* XCRemoteSwiftPackageReference "yasu" */,
+				0B47F7692C5B495C00AEDD9E /* XCRemoteSwiftPackageReference "xivapi-swift" */,
 			);
 			productRefGroup = 0BA156862B06AF7000EA80B0 /* Products */;
 			projectDirPath = "";
@@ -307,6 +311,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0B47F7692C5B495C00AEDD9E /* XCRemoteSwiftPackageReference "xivapi-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Eisenhuth/xivapi-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		0BA156932B06B33900EA80B0 /* XCRemoteSwiftPackageReference "yasu" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/eisenhuth/yasu.git";
@@ -318,6 +330,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0B47F76A2C5B495C00AEDD9E /* xivapi-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B47F7692C5B495C00AEDD9E /* XCRemoteSwiftPackageReference "xivapi-swift" */;
+			productName = "xivapi-swift";
+		};
 		0BA156942B06B33900EA80B0 /* YASU */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0BA156932B06B33900EA80B0 /* XCRemoteSwiftPackageReference "yasu" */;

@@ -1,5 +1,6 @@
 import Foundation
 import YASU
+import xivapi_swift
 
 let quoteIds = [
     6492,
@@ -17,7 +18,6 @@ let quoteIds = [
     6506,
     6507
 ]
-let xivApi = "https://xivapi.com/NpcYell/"
 let cnApi = "https://cafemaker.wakingsands.com/NpcYell/"
 let referenceUrl = URL(string: "https://raw.githubusercontent.com/Eisenhuth/dalamud-nael/master/nael/nael/NaelQuotes.json")
 
@@ -27,19 +27,18 @@ print("-- generating quotes --")
 
 for quoteId in quoteIds{
     
-    let xivApiUrl = URL(string: xivApi+String(quoteId))!
     let chsApiUrl = URL(string: cnApi+String(quoteId))!
     
-    if let xivQuote:ApiQuote? = await loadData(xivApiUrl){
+    if let xivQuote = await xivapiClient().getNpcYell(quoteId, languages: [.en, .ja, .de, .fr]){
         
-        let chsQuote:ApiQuote? = await loadData(chsApiUrl)
+        let chsQuote:ApiQuote? = await YASU.loadData(chsApiUrl)
         
         //fixing french, I guess?
-        var frenchText = xivQuote!.Text_fr
-        frenchText = frenchText.replacingOccurrences(of: "!", with: " !")
-        frenchText = frenchText.replacingOccurrences(of: "  ", with: " ")
+        var frenchText = xivQuote.Text_fr
+        frenchText = frenchText?.replacingOccurrences(of: "!", with: " !")
+        frenchText = frenchText?.replacingOccurrences(of: "  ", with: " ")
         
-        let quoteText = Text(Text_de: xivQuote!.Text_de, Text_en: xivQuote!.Text_en, Text_fr: frenchText, Text_ja: xivQuote!.Text_ja, Text_chs: chsQuote?.Text_chs ?? "")
+        let quoteText = Text(Text_de: xivQuote.Text_de!, Text_en: xivQuote.Text_en ?? "", Text_fr: frenchText!, Text_ja: xivQuote.Text_ja!, Text_chs: chsQuote?.Text_chs ?? "")
         let quote = Quote(ID: quoteId, Text: quoteText)
         
         
@@ -57,7 +56,7 @@ let generatedQuotes = NaelQuotes(Quotes: generatedQuotesArray)
 print("-- generated quotes: \(generatedQuotes.Quotes.count) --")
 print(" ")
 print("-- comparing against reference quotes in github.com/Eisenhuth/dalamud-nael --")
-if let referenceQuotes: NaelQuotes = await loadData(referenceUrl!) {
+if let referenceQuotes: NaelQuotes = await YASU.loadData(referenceUrl!) {
     print("comparing generated quotes against reference quotes\n")
     
     for quoteId in quoteIds {
